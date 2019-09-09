@@ -1,90 +1,90 @@
-const fs = require('fs');
+const Product = require('../models/productModel');
 
-const products = JSON.parse(fs.readFileSync(`__dirname/../src/db/products/products.json`));
+exports.getAllProducts = async (req, res) => {
+    try {
+        const products = await Product.find();
 
-exports.checkId = (req, res, next, val) => {
-    if (!products.find(el => el.id * 1 === val * 1)) {
-        return res.status(404).json({
+        if (req.query.category) {
+            const filter = products.filter(product =>
+                product.categories.find(category => category === req.query.category)
+            );
+
+            return res.status(200).json({
+                status: 'success',
+                result: filter.length,
+                data: {
+                    products: filter
+                }
+            });
+        }
+
+        if (req.query.ids) {
+            const ids = req.query.ids.split(',');
+            const result = [];
+            ids.map(id =>
+                products.map(product => {
+                    if (product.id === id) {
+                        result.push(product);
+                    }
+                })
+            );
+
+            return res.status(200).json({
+                status: 'success',
+                result: result.length,
+                data: {
+                    products: result
+                }
+            });
+        }
+
+        res.status(200).json({
+            status: 'success',
+            result: products.length,
+            data: {
+                products
+            }
+        });
+    } catch (error) {
+        res.status(400).json({
             status: 'fail',
-            message: 'Invalid ID'
+            message: error
         });
     }
-    next();
 };
 
-exports.getProducts = (req, res) => {
-    // get a few products by ids
-
-    if (req.query.ids) {
-        const idsArr = req.query.ids.slice(1, req.query.ids.length - 1).split(',');
-        const result = [];
-
-        idsArr.forEach(el => {
-            products.forEach(product => {
-                if (product.id * 1 === el * 1) result.push(product);
-            });
-        });
-
-        if (result.length === 0) {
-            return res.status(404).json({
-                status: 'fail',
-                message: 'No products found',
-                results: result.length,
-                data: {
-                    products: null
-                }
-            });
-        }
-        return res.status(200).json({
+exports.getProduct = async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        console.log(req.params.id);
+        res.status(200).json({
             status: 'success',
-            results: result.length,
             data: {
-                products: result
+                product
             }
         });
-    }
-
-    // get products by category
-
-    if (req.query.category) {
-        const category = req.query.category.slice(1, req.query.category.length - 1);
-        const result = products.filter(el => el.categories.find(el => el === category));
-
-        if (result.length === 0) {
-            return res.status(404).json({
-                status: 'fail',
-                message: 'No products found',
-                results: result.length,
-                data: {
-                    products: null
-                }
-            });
-        }
-        return res.status(200).json({
-            status: 'success',
-            results: result.length,
-            data: {
-                products: result
-            }
+    } catch (error) {
+        res.status(404).json({
+            status: 'fail',
+            message: error
         });
     }
-
-    res.status(200).json({
-        status: 'success',
-        results: products.length,
-        data: {
-            products
-        }
-    });
 };
 
-exports.getProduct = (req, res) => {
-    const product = products.filter(el => el.id * 1 === req.params.id * 1);
+exports.updateProduct = async (req, res) => {
+    try {
+        const newProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidation: true });
 
-    res.status(200).json({
-        status: 'success',
-        data: {
-            product
-        }
-    });
+        res.status(200).json({
+            status: 'success',
+            data: {
+                product: newProduct
+            }
+        });
+    } catch (error) {
+        res.status(404).json({
+            status: 'fail',
+            message: error
+        });
+    }
 };

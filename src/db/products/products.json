@@ -7,8 +7,8 @@
         "price": "100",
         "currency": "UAN",
         "creatorId": 1,
-        "created": "21-08-2018",
-        "modified": "21-08-2018",
+        "created": "2018-03-21",
+        "modified": "2018-03-21",
         "categories": ["pizza"]
     },
     {
@@ -19,8 +19,8 @@
         "price": "80",
         "currency": "UAN",
         "creatorId": 1,
-        "created": "21-08-2018",
-        "modified": "21-08-2018",
+        "created": "2018-03-21",
+        "modified": "2018-03-21",
         "categories": ["pizza"]
     },
     {
@@ -31,8 +31,8 @@
         "price": "120",
         "currency": "UAN",
         "creatorId": 1,
-        "created": "21-08-2018",
-        "modified": "21-08-2018",
+        "created": "2018-03-21",
+        "modified": "2018-03-21",
         "categories": ["pizza"]
     },
     {
@@ -43,8 +43,8 @@
         "price": "90",
         "currency": "UAN",
         "creatorId": 1,
-        "created": "21-08-2018",
-        "modified": "21-08-2018",
+        "created": "2018-03-21",
+        "modified": "2018-03-21",
         "categories": ["pizza"]
     },
     {
@@ -55,32 +55,32 @@
         "price": "110",
         "currency": "UAN",
         "creatorId": 1,
-        "created": "21-08-2018",
-        "modified": "21-08-2018",
+        "created": "2018-03-21",
+        "modified": "2018-03-21",
         "categories": ["pizza"]
     },
     {
         "id": 19112836,
-        "sku": 1120005,
+        "sku": 1120006,
         "name": "Винишко белое",
         "description": "Пожалуй, лучшее белое винишко в мире",
         "price": "150",
         "currency": "UAN",
         "creatorId": 1,
-        "created": "21-08-2018",
-        "modified": "21-08-2018",
+        "created": "2018-03-21",
+        "modified": "2018-03-21",
         "categories": ["drinks"]
     },
     {
         "id": 19112837,
-        "sku": 1120006,
+        "sku": 1120007,
         "name": "Винишко красное",
         "description": "Пожалуй, лучшее красное винишко в мире",
         "price": "160",
         "currency": "UAN",
         "creatorId": 1,
-        "created": "21-08-2018",
-        "modified": "21-08-2018",
+        "created": "2018-03-21",
+        "modified": "2018-03-21",
         "categories": ["drinks"]
     }
 ]

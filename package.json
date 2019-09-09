@@ -1,29 +1,29 @@
 {
-	"name": "food-delivery-server-goit",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"start": "nodemon index.js",
-		"debug": "nodemon --inspect index.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/murarova/food-delivery-server-goit.git"
-	},
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/murarova/food-delivery-server-goit/issues"
-	},
-	"homepage": "https://github.com/murarova/food-delivery-server-goit",
-	"dependencies": {
-		"dotenv": "^8.1.0",
-		"express": "^4.17.1",
-		"mongoose": "^5.6.13",
-		"morgan": "^1.9.1",
-		"query-string": "^6.8.2",
-		"validator": "^11.1.0"
-	}
+    "name": "hw-4-nodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js",
+        "debug": "nodemon --inspect index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/murarova/hw-4-nodejs.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "hw-4-nodejs/issues"
+    },
+    "homepage": "https://github.com/murarova/hw-4-nodejs",
+    "dependencies": {
+        "dotenv": "^8.1.0",
+        "express": "^4.17.1",
+        "mongoose": "^5.6.13",
+        "morgan": "^1.9.1",
+        "query-string": "^6.8.2",
+        "validator": "^11.1.0"
+    }
 }

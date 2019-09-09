@@ -1,16 +1,55 @@
-const fs = require('fs');
-const writeOrderData = require('../helpers/writeOrderData');
-const { createOrderDir } = require('../helpers/createDir');
+const Order = require('../models/orderModel');
 
-const usersList = JSON.parse(fs.readFileSync(`__dirname/../src/db/users/all-users.json`));
+exports.createOrder = async (req, res) => {
+    try {
+        const newOrder = await Order.create(req.body);
+        res.status(201).json({
+            status: 'success',
+            data: {
+                order: newOrder
+            }
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error
+        });
+    }
+};
 
-exports.createOrder = (req, res) => {
-    // create folder "orders" on users folder
-    const userId = req.body.user;
-    const user = usersList.find(user => user.id * 1 === userId * 1);
-    createOrderDir(user.username);
+exports.getOrder = async (req, res) => {
+    try {
+        const order = await Order.findById(req.params.id);
 
-    // create order file
-    const path = `__dirname/../src/db/users/${user.username}/orders/${user.username}'s order ${Date.now()}.json`;
-    writeOrderData(path, req.body, res);
+        res.status(200).json({
+            status: 'success',
+            data: {
+                order
+            }
+        });
+    } catch (error) {
+        res.status(404).json({
+            status: 'fail',
+            message: error
+        });
+    }
+};
+
+exports.getAllOrders = async (req, res) => {
+    try {
+        const order = await Order.find();
+
+        res.status(200).json({
+            status: 'success',
+            result: order.length,
+            data: {
+                order
+            }
+        });
+    } catch (error) {
+        res.status(404).json({
+            status: 'fail',
+            message: error
+        });
+    }
 };
