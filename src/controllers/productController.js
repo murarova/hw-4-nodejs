@@ -21,8 +21,8 @@ exports.getAllProducts = async (req, res) => {
         if (req.query.ids) {
             const ids = req.query.ids.split(',');
             const result = [];
-            ids.map(id =>
-                products.map(product => {
+            ids.forEach(id =>
+                products.forEach(product => {
                     if (product.id === id) {
                         result.push(product);
                     }

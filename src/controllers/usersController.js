@@ -21,25 +21,18 @@ exports.getUser = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
 
-        res.status(201).json({
+        res.status(200).json({
             status: 'success',
             data: {
                 user
             }
         });
     } catch (error) {
-        res.status(404).json({
+        res.status(400).json({
             status: 'fail',
             message: error
         });
     }
-
-    res.status(200).json({
-        status: 'success',
-        data: {
-            user
-        }
-    });
 };
 
 exports.updateUser = async (req, res) => {
