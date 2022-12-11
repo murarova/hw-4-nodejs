@@ -20,7 +20,7 @@
     "homepage": "https://github.com/murarova/hw-4-nodejs",
     "dependencies": {
         "dotenv": "^8.1.0",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "mongoose": "^5.6.13",
         "morgan": "^1.9.1",
         "query-string": "^6.8.2",
